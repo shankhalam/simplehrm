@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row d-flex justify-content-center p-3">
+    <div class="col-md-6">
+      <p class="h4">Department Details</p>
+    </div>
+    <!-- Add Department field -->
+    <div class="col-md-6 input-group w-50">
+      <input type="text" class="form-control" placeholder="Add department" (reset)="true" [(ngModel)]="DepartmentName">
+      <button type="button" class="btn btn-outline-success" (click)="addDepartment()" *ngIf="DepartmentId==0">Add Department</button>
+
+      <button type="button" class="btn btn-outline-success" (click)="updateDepartment()" *ngIf="DepartmentId!=0">Update Department</button>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table text-end">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Department Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let department of departments">
+        <tr>
+          <td>{{ department.DepartmentId }}</td>
+          <td>{{ department.DepartmentName }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Default button group">
+              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="editClick(department)">Update</button>
+
+              <button type="button" class="btn btn-outline-danger" (click)="deleteDepartment(department.DepartmentId)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

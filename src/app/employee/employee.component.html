@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row d-flex justify-content-between p-3">
+        <p class="h3 width-auto">Employee Details</p>
+        <p-button data-bs-toggle="modal" data-bs-target="#AddEmployee" class="width-auto" icon="pi pi-external-link" label="Add Employee"></p-button>
+    </div>
+    <div class="row">
+        <p-table 
+        [value]="employeeList" 
+        styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }"  
+        [paginator]="true"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]" >
+            <ng-template> 
+                <button class="btn btn-secondary">Add Employee</button>    
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Emp.ID</th>
+                    <th>Emp.Name</th>
+                    <th pSortableColumn="Department">Emp.Department <p-sortIcon field="Department"></p-sortIcon></th>
+                    <th>Date of Join</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-emp>
+                <tr>
+                    <td>{{emp.EmployeeId}}</td>
+                    <td>{{emp.EmployeeName}}</td>
+                    <td>{{emp.Department}}</td>
+                    <td>{{emp.DateOfJoin}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
+
+        <!-- Dialog Box -->
+        <p-dialog id="AddEmployee" header="Header" [style]="{width: '50vw'}">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </p-dialog>
+    </div>
+</div>
+
