@@ -3,7 +3,14 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 
 .width-auto{
     width: auto;
+}
+.width-fit{
+    width: fit-content !important;
+}
+.width-none{
+    width: 0 !important;
 }
