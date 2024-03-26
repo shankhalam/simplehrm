@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row d-flex justify-content-between p-3">
         <p class="h3 width-auto">Employee Details</p>
-        <p-button class="width-auto" icon="pi pi-external-link" label="Add Employee" (click)="showDialog()"></p-button>
+        <p-button class="width-auto" icon="pi pi-user-plus" label="Add Employee" (click)="addClick()"></p-button>
     </div>
     <div class="row">
         <p-table 
@@ -14,15 +14,13 @@
         [tableStyle]="{ 'min-width': '50rem' }"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [rowsPerPageOptions]="[5, 10, 20]" >
-            <ng-template> 
-                <button class="btn btn-secondary">Add Employee</button>    
-            </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th>Emp.ID</th>
                     <th>Emp.Name</th>
                     <th pSortableColumn="Department">Emp.Department <p-sortIcon field="Department"></p-sortIcon></th>
                     <th>Date of Join</th>
+                    <th>Action</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-emp>
@@ -31,6 +29,10 @@
                     <td>{{emp.EmployeeName}}</td>
                     <td>{{emp.Department}}</td>
                     <td>{{emp.DateOfJoin}}</td>
+                    <td>
+                        <p-button icon="pi pi-user-edit" [rounded]="true" severity="primary" (click)="editClick(emp)"></p-button>
+                        <p-button icon="pi pi-trash" (click)="deleteEmployee(emp.EmployeeId)" [rounded]="true" severity="danger"></p-button>
+                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="paginatorright">
@@ -54,15 +56,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img class="flex-auto text-center my-2" width="100px" height="100px" [src]="PhotoPath+PhotoFileName"/>
+                    <img class="flex-auto text-center my-2" width="100px" height="100px" [src]="PhotoPath+Photofile"/>
                     <input type="file" class="form-control" (change)="imageUpload($event)">
                 </div>
             </div>
             <div>
-                <p-button icon="pi pi-check" (click)="addEmployee()"></p-button>
-                <!-- <p-button icon="pi pi-times" severity="danger" (click)="closeDialog()"></p-button> -->
+                <p-button icon="pi pi-check" *ngIf="EmployeeId==0" (click)="addEmployee()"></p-button>
+                <p-button icon="pi pi-check" *ngIf="EmployeeId!=0" (click)="updateEmployee()"></p-button>
+                <p-button icon="pi pi-times" severity="danger" (click)="closeDialog()"></p-button>
             </div>
         </p-dialog>
     </div>
 </div>
-

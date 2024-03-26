@@ -1,21 +1,19 @@
-<div class="container">
-  <!-- Navbar -->
-  <nav class="navbar bg-body-tertiary">
-    <div class="row w-100">
-      <div class="col-md-6">
-        <form class="container-fluid justify-content-start">
-          <button routerLink="home" class="btn btn-outline-success me-2"type="button">Home</button>
-          <button routerLink="department" class="btn btn-outline-primary me-2" type="button">Department</button>
-          <button routerLink="employee" class="btn btn-outline-primary me-2" type="button">Employee</button>
-        </form>
+<p-toolbar styleClass="bg-gray-900 shadow-2" [style]="{'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
+  <ng-template pTemplate="start">
+      <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+  </ng-template>
+  <ng-template pTemplate="center">
+      <div class="flex flex-wrap align-items-center">
+        <p-button label="Home" [outlined]="true" severity="primary" routerLink="home"></p-button>
+        <p-button label="Department" [outlined]="true" severity="primary" routerLink="department"></p-button>
+        <p-button class="my-2" label="Employees" [outlined]="true" severity="primary" routerLink="employee"></p-button>
       </div>
-      <div class="col-md-6">
-        <p class="text-end h3">Employee Data Application</p>
+  </ng-template>
+  <ng-template pTemplate="end">
+      <div class="flex align-items-center gap-2">
+          <span class="font-bold text-bluegray-50 text-white">My Company</span>
       </div>
-    </div>
-  </nav>
-</div>
-
-
+  </ng-template>
+</p-toolbar>
 
 <router-outlet />

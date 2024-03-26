@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
     InputTextModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
+    ToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
